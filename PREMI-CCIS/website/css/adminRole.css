@@ -1,0 +1,241 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #009BF8;
+            min-height: 100%;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%; 
+            background-color: #009BF8;
+            
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: #e8ddd4;
+            border-radius:  0px 0px 0px 50px;
+            display: flex;
+            align-items: center;
+            height: 120px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 12px rgba(101,0,0,0.04);
+            padding-left: 0;
+            gap: 0;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-left: 24px;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-subtitle {
+            color: #000000;
+            font-size: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            font-style: italic;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-top: 0;
+            opacity: 0.95;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            background-color: #009BF8;
+            color: white;
+            text-align: center;
+            padding: 60px 40px 80px;
+            border-radius: 50px 50px 0 0;
+            margin-top: -30px;
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 120px);
+             font-family: "Poppins", sans-serif;
+        }
+
+
+        /* POPPINS TO PAKILAGYAN */
+        .main-title {
+            font-size: 62px;
+            font-weight: bold;
+            margin-top: 20px;;
+            margin-bottom:20px;
+            line-height: 1.2;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            margin-bottom: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .action-btn {
+            background-color: #e8ddd4;
+            width: 650px;
+            height: 90px;
+            color: #000000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+              font-family: "Inter", sans-serif;
+        }
+
+        .action-btn:hover {
+            background-color: #d4c5b8;
+            transform: translateY(-2px);
+        }
+
+         .action-btn a{
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            width: 100%;
+         }
+
+        /* Bottom Icons */
+        .bottom-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .icon-circle:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+       
+
+.admin-icon-circle{
+            width: 24px;
+            height: 24px;
+            fill: white;
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .room-toggle {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .toggle-btn {
+                padding: 6px 15px;
+                font-size: 12px;
+            }
+
+            .main-title {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .main-content {
+                padding: 40px 20px 80px;
+            }
+
+           .action-btn {
+                width: 80%;
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+
+            
+        }
+
+/* Back Button Styles (copied from lectureRoom.css for consistency) */
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #009BF8;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: rgba(234, 223, 214, 0.9);
+    border: 1px solid rgba(101, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(.4,1.5,.5,1), box-shadow 0.3s;
+    font-size: 14px;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.back-btn:hover {
+    background: rgba(234, 223, 214, 1);
+    transform: translateY(-1px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: #009BF8;
+    transition: transform 0.3s cubic-bezier(.4,1.5,.5,1);
+}
+
+.back-btn:hover svg {
+    transform: translateX(-4px) scale(1.1);
+}
+
+.back-btn span {
+    font-family: 'Poppins', sans-serif;
+}
