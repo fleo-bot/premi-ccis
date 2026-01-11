@@ -82,5 +82,3 @@ Main page: http://localhost:8000/html/index.html
 
 
 
-Note: Try Creating an account for yourself and check the database if it was updated!
-

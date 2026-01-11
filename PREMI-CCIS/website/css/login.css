@@ -6,7 +6,10 @@
 }
 
 body {
-  background-color: #009bf8;
+  background-image: url('../assets/placeholder.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #e2dfd2;
   min-height: 100vh;
   display: flex;
