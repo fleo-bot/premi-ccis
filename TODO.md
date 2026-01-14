@@ -1,0 +1,3 @@
+- [x] Update the ENUM in CREATE TABLE rooms to change 'laboratory' to 'Laboratory'
+- [x] Update all INSERT INTO rooms statements to change 'laboratory' to 'Laboratory'
+- [x] Update all INSERT INTO rooms statements for 'Lecture' rooms to set num_chairs to 55 instead of NULL
