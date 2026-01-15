@@ -32,4 +32,12 @@ public class UserService {
         }
         return null;
     }
+
+    public boolean deleteUser(String username) {
+        User user = userDAO.getUserByUsername(username);
+        if (user == null) {
+            return false;
+        }
+        return userDAO.deleteUser(user.getUserId());
+    }
 }

@@ -10,7 +10,7 @@ public class LoginChecker {
 
     public static String[] loginWithRole(String username, String password) {
         try (Connection conn = DBConnection.getConnection()) {
-            String query = "SELECT role, user_id FROM users WHERE username = ? AND password = ?";
+            String query = "SELECT role, user_id FROM users WHERE username = ? AND password = ? AND deleted_at IS NULL";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, username);
             stmt.setString(2, password);
@@ -23,6 +23,6 @@ public class LoginChecker {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null; // failed login 
+        return null; // failed login
     }
 } 

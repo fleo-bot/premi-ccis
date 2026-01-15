@@ -64,7 +64,7 @@ public class RequestInboxDAO {
 
     public static List<RoomRequest> getAllPending() {
         List<RoomRequest> list = new ArrayList<>();
-        String sql = "SELECT * FROM inbox_requests WHERE status = 'pending'";
+        String sql = "SELECT ir.* FROM inbox_requests ir JOIN users u ON ir.user_id = u.user_id WHERE ir.status = 'pending' AND u.deleted_at IS NULL";
         try (Connection conn = DBConnection.getConnection(); Statement stmt =
                 conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -88,7 +88,7 @@ public class RequestInboxDAO {
     public static List<RoomRequest> getAllCurrentBookings() {
         List<RoomRequest> list = new ArrayList<>();
 
-        String sql = "SELECT * FROM bookings WHERE TIMESTAMP(booking_date, end_time) > NOW() ORDER BY booking_date, start_time";
+        String sql = "SELECT b.* FROM bookings b JOIN users u ON b.user_id = u.user_id WHERE TIMESTAMP(b.booking_date, b.end_time) > NOW() AND u.deleted_at IS NULL ORDER BY b.booking_date, b.start_time";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);

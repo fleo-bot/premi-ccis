@@ -31,7 +31,7 @@ public class UserDAO {
     }
 
     public User getUserByUsername(String username) {
-        String sql = "SELECT * FROM users WHERE username = ?";
+        String sql = "SELECT * FROM users WHERE username = ? AND deleted_at IS NULL";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -80,5 +80,21 @@ public class UserDAO {
         }
 
         return null;
+    }
+
+    public boolean deleteUser(int userId) {
+        String sql = "UPDATE users SET deleted_at = NOW() WHERE user_id = ? AND deleted_at IS NULL";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, userId);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

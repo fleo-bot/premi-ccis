@@ -27,3 +27,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Temporary files ###
+gh-extracted/
+gh.zip

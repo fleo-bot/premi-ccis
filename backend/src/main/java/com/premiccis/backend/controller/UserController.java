@@ -33,4 +33,14 @@ public class UserController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @DeleteMapping("/{username}")
+    public ResponseEntity<String> deleteUser(@PathVariable String username) {
+        boolean success = userService.deleteUser(username);
+        if (success) {
+            return ResponseEntity.ok("User deleted successfully");
+        } else {
+            return ResponseEntity.badRequest().body("User not found or already deleted");
+        }
+    }
 }

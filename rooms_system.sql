@@ -11,6 +11,7 @@ CREATE TABLE users (
   email VARCHAR(100) NOT NULL,
   password VARCHAR(100) NOT NULL,
   role ENUM('admin','faculty') NOT NULL,
+  deleted_at TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (user_id),
   UNIQUE KEY username_UNIQUE (username),
   UNIQUE KEY email_UNIQUE (email)

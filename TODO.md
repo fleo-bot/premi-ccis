@@ -1,3 +1,4 @@
-- [x] Update the ENUM in CREATE TABLE rooms to change 'laboratory' to 'Laboratory'
-- [x] Update all INSERT INTO rooms statements to change 'laboratory' to 'Laboratory'
-- [x] Update all INSERT INTO rooms statements for 'Lecture' rooms to set num_chairs to 55 instead of NULL
+- [x] Update UserService.deleteUser to accept username and delete by userId
+- [x] Update UserController.deleteUser to use username in path
+- [x] Update deleteUser.html to label input as username
+- [x] Update deleteUser.js to send username in URL

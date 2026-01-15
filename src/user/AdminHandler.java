@@ -19,7 +19,7 @@ public class AdminHandler {
     public static void handle(int userId) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("1. View Inbox\n2. Book Room by Search\n3. Book Room Directly\n4. Terminate Ongoing Booking");
+        System.out.println("1. View Inbox\n2. Book Room by Search\n3. Book Room Directly\n4. Terminate Ongoing Booking\n5. Delete User Account");
         System.out.print("Choose action: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -29,6 +29,7 @@ public class AdminHandler {
             case 2 -> bookViaSearch(userId);
             case 3 -> directBooking(userId);
             case 4 -> terminateBooking();
+            case 5 -> deleteUserAccount();
             default -> System.out.println("Invalid option.");
         }
     }
@@ -207,6 +208,48 @@ public class AdminHandler {
             System.out.println("✅ Booking for " + selected.getChosenRoom() + " on " + selected.getBookingDate() + " at " + formatter.format(selected.getStartTime()) + " has been terminated.");
         } else {
             System.out.println("❌ Failed to terminate the booking.");
+        }
+    }
+
+    private static void deleteUserAccount() {
+        Scanner scanner = new Scanner(System.in);
+        List<String[]> users = UserDAO.getAllUsers();
+
+        if (users.isEmpty()) {
+            System.out.println("No users available to delete.");
+            return;
+        }
+
+        System.out.println("--- Available Users ---");
+        for (int i = 0; i < users.size(); i++) {
+            String[] user = users.get(i);
+            System.out.println((i + 1) + ". ID: " + user[0] + " | Username: " + user[1] + " | Email: " + user[2] + " | Role: " + user[3]);
+        }
+
+        System.out.print("Enter number to delete: ");
+        int index = scanner.nextInt();
+        scanner.nextLine();
+
+        if (index < 1 || index > users.size()) {
+            System.out.println("❌ Invalid selection.");
+            return;
+        }
+
+        String[] selectedUser = users.get(index - 1);
+        int userId = Integer.parseInt(selectedUser[0]);
+
+        System.out.print("Are you sure you want to delete user '" + selectedUser[1] + "'? (Y/N): ");
+        String confirmation = scanner.nextLine().trim().toUpperCase();
+
+        if (confirmation.equals("Y")) {
+            boolean success = UserDAO.softDeleteUser(userId);
+            if (success) {
+                System.out.println("✅ User '" + selectedUser[1] + "' has been deleted successfully.");
+            } else {
+                System.out.println("❌ Failed to delete the user.");
+            }
+        } else {
+            System.out.println("Deletion cancelled.");
         }
     }
 

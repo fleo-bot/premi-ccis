@@ -9,13 +9,15 @@
 body {
     background-image: url('../assets/placeholder2.png');
     background-size: cover;
+    color: #009bf8;
+    background-color: #009bf8;
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     overflow: hidden; /* Prevent body scrollbars */
 }
 
-.hidden { 
+.hidden {
     display: none !important;
 }
 
